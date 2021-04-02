@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.ManagerHomeFrag"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_manager_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_addNewPackageFrag"
+            app:destination="@id/addNewPackageFrag"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_construction_site"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.ManageConstructionSiteFrag"
+        android:label="@string/manage_const_site"
+        tools:layout="@layout/fragment_manage_construction_site" >
+        <action
+            android:id="@+id/action_navigation_construction_site_to_addConstructionSiteFrag"
+            app:destination="@id/addConstructionSiteFrag"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_driver"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.ManageDriverFrag"
+        android:label="@string/manage_drivers"
+        tools:layout="@layout/fragment_manage_driver" >
+        <action
+            android:id="@+id/action_navigation_driver_to_addDriverFragment"
+            app:destination="@id/addDriverFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_vendors"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.ManageVendorsFrag"
+        android:label="@string/manage_vendors"
+        tools:layout="@layout/fragment_manage_vendors" >
+        <action
+            android:id="@+id/action_navigation_vendors_to_addVendorFragment"
+            app:destination="@id/addVendorFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.ManagerSettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_manager_settings" />
+    <fragment
+        android:id="@+id/addConstructionSiteFrag"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.AddConstructionSiteFrag"
+        android:label="Add Construction Site"
+        tools:layout="@layout/fragment_add_construction_site" >
+        <action
+            android:id="@+id/action_back_add_construction_site"
+            app:destination="@id/navigation_construction_site"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_construction_site"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addVendorFragment"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.AddVendorFragment"
+        android:label="Add New Vendor"
+        tools:layout="@layout/fragment_add_vendor" >
+        <action
+            android:id="@+id/action_back_add_vendor"
+            app:destination="@id/navigation_vendors"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_vendors"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDriverFragment"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.AddDriverFragment"
+        android:label="Add Driver"
+        tools:layout="@layout/fragment_add_driver" >
+        <action
+            android:id="@+id/action_back_add_driver"
+            app:destination="@id/navigation_driver"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/navigation_driver"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addNewPackageFrag"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.AddNewPackageFrag"
+        android:label="Add New Package"
+        tools:layout="@layout/fragment_add_new_package">
+        <action
+            android:id="@+id/action_addNewPackageFrag_to_addPackageContentFrag"
+            app:destination="@id/addPackageContentFrag"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/add_new_package_to_home"
+            app:destination="@id/navigation_home"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPackageContentFrag"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.AddPackageContentFrag"
+        android:label="Package Contents"
+        tools:layout="@layout/fragment_add_package_content">
+        <action
+            android:id="@+id/action_addPackageContentFrag_to_navigation_home"
+            app:destination="@id/navigation_home"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_enter"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_back_add_packageContent_to_add_new_package"
+            app:destination="@id/addNewPackageFrag"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/addNewPackageFrag"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

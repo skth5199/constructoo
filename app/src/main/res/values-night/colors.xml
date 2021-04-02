@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#FFa159cc</color>
+    <color name="colorPrimaryVariant" >#FF40356f</color>
+
+    <color name="colorSecondary">#FF3023ae</color>
+    <color name="colorSecondaryVariant">#2b2096</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="invertedWhite">#FF000000</color>
+    <color name="invertedBlack">#FFFFFFFF</color>
+
+    <color name="colorBackground">#FF212121</color>
+
+</resources>

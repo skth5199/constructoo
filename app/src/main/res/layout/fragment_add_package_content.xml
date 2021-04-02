@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".manager.manager_fragments.AddPackageContentFrag">
+
+    <FrameLayout
+        android:id="@+id/addPackageContentsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="@string/package_contents"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/noMaterialsTV"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="5dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd=  "15dp"
+                    android:paddingStart="15dp"
+                    android:background="@drawable/empty_node_error_bk"
+                    android:fontFamily="@font/open_sans"
+                    android:textSize="13sp"
+                    android:text="@string/no_materials_selected_yet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/packageContentsRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+
+                <TextView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/open_sans_semibold"
+                    android:text="@string/choose_materials"
+                    android:textColor="@color/colorSecondary"
+                    android:textSize="16sp" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_marginTop="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/vendorMaterialsRV"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <LinearLayout
+                    android:id="@+id/addPackageBtn"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:gravity="center"
+                    android:background="@drawable/glowing_primary_btn"
+                    android:layout_marginBottom="50dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_width="200dp"
+                    android:layout_height="55dp">
+                    <TextView
+                        android:fontFamily="@font/open_sans_bold"
+                        android:textSize="18sp"
+                        android:text="Add Package"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_add_package"
+                        android:layout_width= "30dp"
+                        android:layout_height="30dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/progressLayout"
+            android:visibility="gone"
+            android:gravity="center"
+            android:background="@color/colorBackground"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/progressMsg"
+                android:textColor="@color/colorSecondary"
+                android:text="Adding package to your list ....."
+                android:textSize="16sp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</layout>

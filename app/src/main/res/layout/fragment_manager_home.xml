@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".manager.manager_fragments.ManagerHomeFrag">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/managerHomeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/addPackageFAB"
+            android:text="@string/new_package"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="10sp"
+            app:iconSize="15dp"
+            app:icon="@drawable/ic_plus_ico"
+            android:textColor="@android:color/white"
+            app:iconTint="@android:color/white"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:src="@drawable/ic_plus_ico"
+            app:rippleColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_margin="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:ignore="SmallSp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

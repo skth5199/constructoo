@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".manager.manager_fragments.AddNewPackageFrag">
+
+    <FrameLayout
+        android:id="@+id/addNewPackageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:padding="20dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- ........ Site Layouts Start ............... -->
+                <LinearLayout
+                    android:layout_marginTop="30dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginStart="2dp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:textSize="18sp"
+                        android:text="@string/choose_site"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        app:tint = "@color/colorSecondary"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_construction_site_ico"
+                        android:layout_width= "22dp"
+                        android:layout_height="22dp"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/siteSpinnerLayout"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/spinner_selected_bk"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp">
+                    <Spinner
+                        android:id="@+id/siteSpinner"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </RelativeLayout>
+                <ProgressBar
+                    android:id="@+id/sitePrgBar"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width= "30dp"
+                    android:layout_height="30dp"/>
+                <!-- ........ Site Layouts End ............... -->
+
+                <!-- ........ Drivers Layouts Start ............... -->
+                <LinearLayout
+                    android:layout_marginTop="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginStart="2dp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:textSize="18sp"
+                        android:text="@string/choose_driver"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        app:tint = "@color/colorSecondary"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_driver_ico"
+                        android:layout_width= "22dp"
+                        android:layout_height="22dp"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/driverSpinnerLayout"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/spinner_selected_bk"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp">
+                    <Spinner
+                        android:id="@+id/driverSpinner"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </RelativeLayout>
+                <ProgressBar
+                    android:id="@+id/driverPrgBar"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width= "30dp"
+                    android:layout_height="30dp"/>
+                <!-- ........ Site Layouts End ............... -->
+
+                <!-- ........ Drivers Layouts Start ............... -->
+                <LinearLayout
+                    android:layout_marginTop="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginStart="2dp"
+                        android:textColor="@color/colorSecondary"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:textSize="18sp"
+                        android:text="@string/choose_vendor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        app:tint = "@color/colorSecondary"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/ic_vendor_ico"
+                        android:layout_width= "22dp"
+                        android:layout_height="22dp"/>
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/vendorSpinnerLayout"
+                    android:visibility="gone"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/spinner_selected_bk"
+                    android:layout_width="match_parent"
+                    android:layout_height="55dp">
+                    <Spinner
+                        android:id="@+id/vendorSpinner"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </RelativeLayout>
+                <ProgressBar
+                    android:id="@+id/vendorPrgBar"
+                    android:layout_marginTop="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width= "30dp"
+                    android:layout_height="30dp"/>
+                <!-- ........ Site Layouts End ............... -->
+
+            </LinearLayout>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/nextFAB"
+            android:src="@drawable/next_ico"
+            app:tint = "@android:color/white"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".vendor.EditMaterialInfoFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/addMaterialContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:hint="@string/material_name"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/logoIV">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/materialNameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/weight"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/logoIV">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/materialWeightET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/dimensions_per_unit"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/logoIV">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/materialDimensionsET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/material_colour"
+                    android:textColorHint="@color/colorPrimary"
+                    app:layout_constraintTop_toBottomOf="@+id/logoIV">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/materialColourET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="60dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/deleteMaterialFAB"
+                        android:backgroundTint="#EF5350"
+                        android:layout_marginEnd="20dp"
+                        android:gravity="center"
+                        app:iconGravity="textEnd"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="Delete"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        app:icon="@drawable/ic_trash_ico"
+                        app:iconTint="@android:color/white"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                        android:id="@+id/updateInfoFAB"
+                        android:gravity="center"
+                        app:iconGravity="textEnd"
+                        android:fontFamily="@font/open_sans_semibold"
+                        android:text="Update"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        app:icon="@drawable/save_ico"
+                        app:iconTint="@android:color/white"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/progressLayout"
+            android:visibility="gone"
+            android:gravity="center"
+            android:background="@color/colorBackground"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:textColor="@color/colorSecondary"
+                android:layout_marginTop="5dp"
+                android:text="@string/adding_material_to_your_list"
+                android:fontFamily="@font/open_sans_semibold"
+                android:textSize="15sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

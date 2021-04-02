@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#FFb664d2</color>
+    <color name="colorPrimaryVariant" >#FF4f418a</color>
+
+    <color name="colorSecondary">#FF4333e5</color>
+    <color name="colorSecondaryVariant">#FF3328a5</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="invertedWhite">#FF000000</color>
+    <color name="invertedBlack">#FFFFFFFF</color>
+
+    <color name="colorBackground">#FFf9f9f9</color>
+
+    <color name="hollowPrimary"  >#4D651FFF</color>
+    <color name="hollowSecondary">#4D651FFF</color>
+
+</resources>

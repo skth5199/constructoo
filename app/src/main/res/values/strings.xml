@@ -1,0 +1,77 @@
+<resources>
+    <string name="app_name">Constructoo</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="username">Username</string>
+    <string name="account_type">Account Type</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="login">Login</string>
+    <string name="already_have_an_account">already have an account?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="please_wait">Please wait .....</string>
+    <string name="creating_account_please_wait">Creating account, please wait .....</string>
+    <string name="your_account_is_pending_approval_you_will_have_access_to_app_feature_after_the_admin_verifies_your_account">Your account is pending approval. You will have access to app feature after the admin verifies your account.</string>
+    <string name="login_with_a_different_account">Login with a different account</string>
+
+    <array name="accountTypeArray">
+        <item>Select Type</item>
+        <item>Manager</item>
+        <item>Driver</item>
+        <item>Vendor</item>
+    </array>
+    <string name="title_activity_manager_home">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="authenticating_please_wait">authenticating, please wait ....</string>
+    <string name="construction_site">Construction Site</string>
+    <string name="drivers">Drivers</string>
+    <string name="vendors">Vendors</string>
+    <string name="settings">Settings</string>
+    <string name="manage_drivers">Manage Drivers</string>
+    <string name="manage_const_site">Manage Construction Site</string>
+    <string name="manage_vendors">Manage Vendors</string>
+    <string name="x_const_site">Const. Site</string>
+    <string name="new_package">New Package</string>
+    <string name="site_name">Site Name</string>
+    <string name="site_address">Site Address</string>
+    <string name="site_manager_optional">Site Manager (optional)</string>
+    <string name="vendor_name">Vendor Name</string>
+    <string name="vendor_email">Vendor Email</string>
+    <string name="vendor_contact">Vendor Contact #</string>
+    <string name="save_vendor">Save Vendor</string>
+    <string name="getting_vendors_list">Getting vendors list .....</string>
+    <string name="address">Address</string>
+    <string name="my_vendors">My Vendors</string>
+    <string name="getting_your_vendors_list">Getting your vendors list....</string>
+    <string name="there_are_no_vendors_in_your_list">There are no vendors in your list.</string>
+    <string name="getting_your_construction_sites">Getting your construction sites .....</string>
+    <string name="there_are_no_sites_in_your_list">There are no sites in your list</string>
+    <string name="log_out">Log  Out</string>
+    <string name="getting_drivers_list">Getting drivers list .....</string>
+    <string name="no_drivers_found_in_your_list">No drivers found in your list</string>
+    <string name="getting_your_drivers_list">Getting your drivers list</string>
+    <string name="title_activity_vendor_home">MainActivity</string>
+    <string name="materials_list">Materials</string>
+    <string name="my_info">My  Info</string>
+    <string name="save_info">Save Info</string>
+    <string name="material_name">Material Name</string>
+    <string name="weight">Weight (kg)</string>
+    <string name="dimensions_per_unit">Dimensions (Per Unit)</string>
+    <string name="material_colour">Material Colour</string>
+    <string name="add_to_my_list">Add To My List</string>
+    <string name="adding_material_to_your_list">Adding material to your list .....</string>
+    <string name="m_dimensions">Dimensions :</string>
+    <string name="save_changes">Save Changes</string>
+    <string name="there_are_no_materials_in_your_list">There are no materials in your list</string>
+    <string name="choose_site">Choose Site</string>
+    <string name="choose_driver">Choose Driver</string>
+    <string name="choose_vendor">Choose Vendor</string>
+    <string name="next">Next</string>
+    <string name="package_contents">Package Contents</string>
+    <string name="choose_materials">Choose Materials</string>
+    <string name="no_materials_selected_yet">no materials selected yet</string>
+
+</resources>

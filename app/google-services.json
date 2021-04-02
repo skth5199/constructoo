@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "636600841127",
+    "project_id": "constructoo",
+    "storage_bucket": "constructoo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636600841127:android:51a6193fc48ebec481fc82",
+        "android_client_info": {
+          "package_name": "com.ald.uniofsouthampton.constructoo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "636600841127-crrv8jg09oi3v54c7jtkg2ja1ln5nitt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1a4Dpnl5ar9CMChQmtLaNTw1N6UMY0x4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "636600841127-crrv8jg09oi3v54c7jtkg2ja1ln5nitt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

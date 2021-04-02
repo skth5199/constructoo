@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/vendors_navigation"
+    app:startDestination="@id/vendorHomeFragment">
+
+    <fragment
+        android:id="@+id/vendorHomeFragment"
+        android:name="com.ald.uniofsouthampton.constructoo.vendor.VendorHomeFragment"
+        android:label="fragment_vendor_home"
+        tools:layout="@layout/fragment_vendor_home" >
+        <action
+            android:id="@+id/action_vendorHomeFragment_to_vendorMaterialsFragment"
+            app:destination="@id/vendorMaterialsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_vendorHomeFragment_to_vendorSettingsFragment"
+            app:destination="@id/vendorSettingsFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/vendorMaterialsFragment"
+        android:name="com.ald.uniofsouthampton.constructoo.vendor.VendorMaterialsFragment"
+        android:label="fragment_vendor_materials"
+        tools:layout="@layout/fragment_vendor_materials" >
+        <action
+            android:id="@+id/action_vendorMaterialsFragment_to_addMaterialFragment"
+            app:destination="@id/addMaterialFragment"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_vendorMaterialsFragment_to_editMaterialInfoFragment"
+            app:destination="@id/editMaterialInfoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/vendorSettingsFragment"
+        android:name="com.ald.uniofsouthampton.constructoo.vendor.VendorSettingsFragment"
+        android:label="Vendor Info Settings"
+        tools:layout="@layout/fragment_vendor_settings" />
+    <fragment
+        android:id="@+id/addMaterialFragment"
+        android:name="com.ald.uniofsouthampton.constructoo.vendor.AddMaterialFragment"
+        android:label="Add Material"
+        tools:layout="@layout/fragment_add_material" />
+    <fragment
+        android:id="@+id/editMaterialInfoFragment"
+        android:name="com.ald.uniofsouthampton.constructoo.vendor.EditMaterialInfoFragment"
+        android:label="fragment_edit_material_info"
+        tools:layout="@layout/fragment_edit_material_info" />
+</navigation>
