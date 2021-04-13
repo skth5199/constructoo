@@ -17,5 +17,6 @@
 
     <color name="hollowPrimary"  >#4D651FFF</color>
     <color name="hollowSecondary">#4D651FFF</color>
+    <color name="glowingGreen">#4D76FF03</color>
 
 </resources>

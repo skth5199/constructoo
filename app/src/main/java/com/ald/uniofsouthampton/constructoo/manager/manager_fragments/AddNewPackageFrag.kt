@@ -69,6 +69,7 @@ class AddNewPackageFrag : Fragment() {
 
             extras.putString("driverName"   ,myDriversList[dIndex].name)
             extras.putString("driverID"     ,myDriversList[dIndex].id)
+            extras.putString("driverContact",myDriversList[dIndex].address)
 
             extras.putString("vendorID"     ,myVendorsList[vIndex].id)
             extras.putString("vendorName"   ,myVendorsList[vIndex].name)
@@ -78,6 +79,7 @@ class AddNewPackageFrag : Fragment() {
 
         return binding.root
     }
+
 
     override fun onDestroy() {
         if(sitesDbListener!=null){
@@ -149,8 +151,10 @@ class AddNewPackageFrag : Fragment() {
                         val driverID : String? = snap.key
                         val driverName : String? = snap.child("driverName").value as String?
                         val driverEmail : String? = snap.child("driverEmail").value as String?
-                        if(driverID!=null && driverName!=null && driverEmail!=null){
-                            myDriversList.add(PartialInfoModel(driverID,driverName,driverEmail))
+                        val driverContactNum : String? = snap.child("contactNum").value as String?
+
+                        if(driverID!=null && driverName!=null && driverEmail!=null&&driverContactNum!=null){
+                            myDriversList.add(PartialInfoModel(driverID,driverName,driverContactNum))
                             driverNames.add(driverName)
                         }
                     }
@@ -170,6 +174,7 @@ class AddNewPackageFrag : Fragment() {
         if(driversDbListener!=null)
          driversRef?.addValueEventListener(driversDbListener!!)
     }
+
     private fun getManagerVendorsList(){
         vendorsRef = rootRef.child("ManagerVendors").child(mAuth.uid!!)
         vendorsDbListener = (object : ValueEventListener{

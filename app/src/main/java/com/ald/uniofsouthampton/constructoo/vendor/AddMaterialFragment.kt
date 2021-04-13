@@ -54,7 +54,7 @@ class AddMaterialFragment : Fragment() {
         }
         val dimensions = binding.materialDimensionsET.text.toString()
         if(dimensions.length<3){
-            showSnackMessage("Material name must contain at least 3 characters")
+            showSnackMessage("Material dimensions must contain at least 3 characters")
             return
         }
         val colour = binding.materialColourET.text.toString()

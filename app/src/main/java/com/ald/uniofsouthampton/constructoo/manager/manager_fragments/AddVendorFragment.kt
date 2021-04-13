@@ -29,7 +29,6 @@ class AddVendorFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_vendor, container, false)
         rootRef = FirebaseDatabase.getInstance().reference
 
@@ -63,7 +62,6 @@ class AddVendorFragment : Fragment() {
                         adapter.notifyDataSetChanged()
                     }
                 }
-
             }
 
             override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {

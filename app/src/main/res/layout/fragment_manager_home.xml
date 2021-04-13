@@ -9,25 +9,140 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <LinearLayout
+            android:id="@+id/layout1"
+            android:visibility="invisible"
+            android:weightSum="3"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/allBtn"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/all_orders"
+                android:textSize="15sp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+            <TextView
+                android:id="@+id/pendingBtn"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/pending"
+                android:textSize="15sp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+            <TextView
+                android:id="@+id/completedBtn"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?attr/selectableItemBackground"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/completed"
+                android:textSize="15sp"
+                android:fontFamily="@font/open_sans_semibold"
+                android:layout_width="0dp"
+                android:layout_height="50dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:visibility="invisible"
+            app:layout_constraintTop_toBottomOf="@+id/layout1"
+            android:weightSum="3"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:id="@+id/aoBar"
+                android:background="@color/colorSecondary"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+            <RelativeLayout
+                android:id="@+id/poBar"
+                android:visibility="invisible"
+                android:background="@color/colorSecondary"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+            <RelativeLayout
+                android:id="@+id/coBar"
+                android:visibility="invisible"
+                android:background="@color/colorSecondary"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="3dp"/>
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/managerOrdersRV"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout2" />
+
+        <TextView
+            android:id="@+id/noOrdersLayout"
+            android:background="@drawable/empty_node_error_bk"
+            android:text="@string/you_don_t_have_any_orders_in_your_list"
+            android:textSize="14sp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:gravity="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <ProgressBar
+            android:id="@+id/managerHomePrg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/addPackageFAB"
-            android:text="@string/new_package"
-            android:textStyle="bold"
-            android:textAllCaps="false"
-            android:textSize="10sp"
-            app:iconSize="15dp"
-            app:icon="@drawable/ic_plus_ico"
-            android:textColor="@android:color/white"
-            app:iconTint="@android:color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:src="@drawable/ic_plus_ico"
-            app:rippleColor="@android:color/white"
+            android:text="@string/new_package"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            app:icon="@drawable/ic_plus_ico"
+            app:iconSize="15dp"
+            app:iconTint="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            app:rippleColor="@android:color/white"
             tools:ignore="SmallSp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

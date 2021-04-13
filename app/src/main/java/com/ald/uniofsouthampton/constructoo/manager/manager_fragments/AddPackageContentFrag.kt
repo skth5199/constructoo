@@ -1,5 +1,6 @@
 package com.ald.uniofsouthampton.constructoo.manager.manager_fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -20,6 +21,9 @@ import com.ald.uniofsouthampton.constructoo.recycler.VendorMaterialModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class AddPackageContentFrag : Fragment() {
     private lateinit var binding : FragmentAddPackageContentBinding
@@ -33,6 +37,7 @@ class AddPackageContentFrag : Fragment() {
     private var siteAddress  : String? = ""
     private var driverName   : String? = ""
     private var driverID     : String? = ""
+    private var driverContact: String? = ""
     private var vendorName   : String? = ""
     private var vendorAddress: String? = ""
     private var vendorID     : String? = ""
@@ -40,6 +45,7 @@ class AddPackageContentFrag : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
+            driverContact= it.getString("driverContact","")
             siteName = it.getString("siteName","")
             siteAddress = it.getString("siteAddress","")
             driverID = it.getString("driverID","")
@@ -76,6 +82,9 @@ class AddPackageContentFrag : Fragment() {
         return binding.root
     }
 
+    private fun getCurrentDate() : String {
+        return SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+    }
 
     private fun getVendorMaterials() {
         if(mAuth.uid!=null){
@@ -116,15 +125,19 @@ class AddPackageContentFrag : Fragment() {
         Snackbar.make(binding.addPackageContentsContainer,msg,Snackbar.LENGTH_LONG).show()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun addNewPackage(){
         if(selectedMaterials.isEmpty()){
             showSnack("Package has no contents.")
             return
         }
-        val orderInfoRef = rootRef.child("DeliveryPackages").child(mAuth.uid!!)
+        val orderInfoRef = rootRef.child("Orders").child(mAuth.uid!!)
         val orderID = orderInfoRef.push().key
         if(orderID!=null){
             val orderMap : HashMap<String,String> = HashMap()
+            orderMap["managerID"]     = mAuth.uid!!
+            orderMap["driverContact"] = driverContact!!
+            orderMap["dateAdded"]     = getCurrentDate()
             orderMap["status"]        = "pending"
             orderMap["siteName"]      = siteName!!
             orderMap["siteAddress"]   = siteAddress!!
@@ -133,13 +146,14 @@ class AddPackageContentFrag : Fragment() {
             orderMap["vendorName"]    = vendorName!!
             orderMap["vendorAddress"] = vendorAddress!!
             orderMap["vendorID"]      = vendorID!!
+
             binding.progressLayout.visibility = View.VISIBLE
             orderInfoRef.child(orderID).setValue(orderMap).addOnCompleteListener { perlimanaryTask->
                 if(perlimanaryTask.isSuccessful){
-                    orderInfoRef.child("packageContents").push().setValue(selectedMaterials).addOnCompleteListener {
+                    orderInfoRef.child(orderID).child("packageContents").setValue(selectedMaterials).addOnCompleteListener {
                         if(it.isSuccessful){
                             binding.progressMsg.text = "Notifying driver ....."
-                            val driverRef = rootRef.child("DriverOrders").child(driverID!!).push()
+                            val driverRef = rootRef.child("DriverOrders").child(driverID!!).child(orderID)
                             driverRef.setValue(orderMap).addOnCompleteListener { finalTask->
                                 if(finalTask.isSuccessful){
                                     Toast.makeText(requireActivity(),"Package successfully added for delivery.",Toast.LENGTH_LONG).show()
@@ -160,9 +174,6 @@ class AddPackageContentFrag : Fragment() {
                     showSnack("Something went wrong :(")
                 }
             }
-
         }
-
     }
-
 }

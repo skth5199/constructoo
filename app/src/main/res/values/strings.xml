@@ -43,7 +43,6 @@
     <string name="vendor_contact">Vendor Contact #</string>
     <string name="save_vendor">Save Vendor</string>
     <string name="getting_vendors_list">Getting vendors list .....</string>
-    <string name="address">Address</string>
     <string name="my_vendors">My Vendors</string>
     <string name="getting_your_vendors_list">Getting your vendors list....</string>
     <string name="there_are_no_vendors_in_your_list">There are no vendors in your list.</string>
@@ -73,5 +72,26 @@
     <string name="package_contents">Package Contents</string>
     <string name="choose_materials">Choose Materials</string>
     <string name="no_materials_selected_yet">no materials selected yet</string>
+    <string name="pending_orders">Pending Orders</string>
+    <string name="completed_orders">Completed Orders</string>
+    <string name="address">Address</string>
+    <string name="contact">Contact#</string>
+    <string name="deliver_to">Deliver To :</string>
+    <string name="vendor">Vendor :</string>
+    <string name="vendor_address">Vendor Address :</string>
+    <string name="detials">Detials</string>
+    <string name="date_added">Date Added :</string>
+    <string name="order_status">Order Status</string>
+    <string name="current_status">Current Status :</string>
+    <string name="pending">Pending</string>
+    <string name="mark_as_complete">Mark as Complete</string>
+    <string name="mark_complete">Mark Complete</string>
+    <string name="no_pending_orders">No pending orders</string>
+    <string name="delivery_address">Delivery Address :</string>
+    <string name="driver_contact">Driver Contact :</string>
+    <string name="driver_name">Driver Name :</string>
+    <string name="you_don_t_have_any_orders_in_your_list">You do not have any orders in your list</string>
+    <string name="all_orders">All Orders</string>
+    <string name="completed">Completed</string>
 
 </resources>

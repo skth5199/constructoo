@@ -16,6 +16,12 @@
             app:enterAnim="@android:anim/slide_in_left"
             app:exitAnim="@android:anim/slide_out_right"
             app:popExitAnim="@android:anim/slide_out_right" />
+        <action
+            android:id="@+id/action_navigation_home_to_managerOrderDetailsFrag"
+            app:destination="@id/managerOrderDetailsFrag"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/navigation_construction_site"
@@ -130,5 +136,10 @@
             app:popUpTo="@id/addNewPackageFrag"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/managerOrderDetailsFrag"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.ManagerOrderDetailsFrag"
+        android:label="Order Details"
+        tools:layout="@layout/fragment_manager_order_details" />
 
 </navigation>

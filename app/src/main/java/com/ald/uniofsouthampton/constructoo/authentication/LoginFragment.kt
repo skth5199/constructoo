@@ -10,6 +10,7 @@ import android.widget.AdapterView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.ald.uniofsouthampton.constructoo.HideKeyboardHelper
 import com.ald.uniofsouthampton.constructoo.R
 import com.ald.uniofsouthampton.constructoo.databinding.FragmentLoginBinding
 import com.ald.uniofsouthampton.constructoo.helpers.FormatCheckHelpers
@@ -29,6 +30,7 @@ class LoginFragment : Fragment() {
         }
         setUpSpinner()
         binding.loginFAB.setOnClickListener {
+            HideKeyboardHelper.hideKeyboardFrom(requireActivity(),binding.loginFragContainer)
             val email = binding.emailET.text.toString()
             if(email.isEmpty() || !FormatCheckHelpers.isEmailValid(email)){
                 showSnackMsg("Please enter a valid email address")

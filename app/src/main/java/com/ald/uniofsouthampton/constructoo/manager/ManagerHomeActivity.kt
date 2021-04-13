@@ -7,7 +7,12 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.ald.uniofsouthampton.constructoo.MyFirebaseIDService
 import com.ald.uniofsouthampton.constructoo.R
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.messaging.FirebaseMessaging
 
 class ManagerHomeActivity : AppCompatActivity() {
 
@@ -27,6 +32,27 @@ class ManagerHomeActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.manager_host_fragment)
         return navController.navigateUp() || super.onSupportNavigateUp()
+    }
+
+    override fun onStart() {
+        val uid = FirebaseAuth.getInstance().uid
+        if (uid != null) {
+            FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    if (task.result != null) {
+                        val newToken = task.result.toString()
+                        val tokenREF = FirebaseDatabase.getInstance().reference.child("UserTokens").child(uid).child("fcmToken")
+                        tokenREF.setValue(newToken)
+//                        val prevToken = MyFirebaseIDService.getToken(this)
+//                        if (prevToken != null && newToken != prevToken) {
+//                            val tokenREF = FirebaseDatabase.getInstance().reference.child("UserTokens").child(uid).child("fcmToken")
+//                            tokenREF.setValue(newToken)
+//                        }
+                    }
+                }
+            })
+        }
+        super.onStart()
     }
 
 }

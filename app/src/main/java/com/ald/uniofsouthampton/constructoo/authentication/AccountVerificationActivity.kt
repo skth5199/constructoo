@@ -8,10 +8,13 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import com.ald.uniofsouthampton.constructoo.R
+import com.ald.uniofsouthampton.constructoo.driver.DriversHomeActivity
 import com.ald.uniofsouthampton.constructoo.manager.ManagerHomeActivity
 import com.ald.uniofsouthampton.constructoo.vendor.VendorsActivity
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.messaging.FirebaseMessaging
 
 // The purpose of this activity is simply to check if the account is verified/approved by the Firebase Super Admin, this is necessary to restrict access to the app features
 class AccountVerificationActivity : AppCompatActivity() {
@@ -41,6 +44,7 @@ class AccountVerificationActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+
         var accountType : String? = null
         if(prefs.contains("accountType")){
             accountType = prefs.getString("accountType",null)
@@ -52,7 +56,10 @@ class AccountVerificationActivity : AppCompatActivity() {
                     startActivity(Intent(this@AccountVerificationActivity,VendorsActivity::class.java))
                     finish()
                 }
-                "Driver"  -> {}
+                "Driver"  -> {
+                    startActivity(Intent(this@AccountVerificationActivity,DriversHomeActivity::class.java))
+                    finish()
+                }
                 "Manager" -> { // when account type is manager then verify his account
                     val dbRef = rootRef.child("Users").child("Manager").child(uid)
                     dbRef.addListenerForSingleValueEvent(object : ValueEventListener {

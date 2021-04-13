@@ -50,11 +50,11 @@ class AddDriverFragment : Fragment() {
 
                     val email : String? = snapshot.child("email").value as String?
                     val username : String? = snapshot.child("username").value as String?
-                    val address : String? = snapshot.child("address").value as String?
+                    val contactNum : String? = snapshot.child("contactNum").value as String?
 
-                    if(email!=null && username!=null && address!=null){
+                    if(email!=null && username!=null && contactNum!=null){
                         idList.add(driverID)
-                        driversList.add(DriverModel(driverID, username, email))
+                        driversList.add(DriverModel(driverID, username, email,contactNum))
                         adapter.notifyDataSetChanged()
                     }
                 }
@@ -75,6 +75,6 @@ class AddDriverFragment : Fragment() {
 
         })
     }
-    data class DriverModel(val driverID :String, val driverName : String, val driverEmail: String)
+    data class DriverModel(val driverID :String, val driverName : String, val driverEmail: String,val contactNum:String)
 
 }
