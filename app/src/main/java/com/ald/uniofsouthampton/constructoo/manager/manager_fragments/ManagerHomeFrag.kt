@@ -40,7 +40,7 @@ class ManagerHomeFrag : Fragment() {
             mAuth = FirebaseAuth.getInstance()
             rootRef = FirebaseDatabase.getInstance().reference
 
-            adapter = ManagerOrdersAdapter(requireContext(),orderDisplayList,findNavController())
+            adapter = ManagerOrdersAdapter(requireContext(),1,orderDisplayList,findNavController())
             managerOrdersRV.layoutManager = LinearLayoutManager(requireActivity())
             managerOrdersRV.adapter = adapter
 
@@ -96,7 +96,7 @@ class ManagerHomeFrag : Fragment() {
                     }
                 }
             }
-            adapter = ManagerOrdersAdapter(requireContext(),orderDisplayList,findNavController())
+            adapter = ManagerOrdersAdapter(requireContext(),1,orderDisplayList,findNavController())
             managerOrdersRV.adapter = adapter
         }
     }
@@ -116,11 +116,12 @@ class ManagerHomeFrag : Fragment() {
                         for (snapshot: DataSnapshot in dataSnapshot.children) {
                             val orderID: String? = snapshot.key
                             val managerID: String? = snapshot.child("managerID").value as String?
+                            val siteManagerID : String? = snapshot.child("siteManagerID").value as String?
                             val status: String? = snapshot.child("status").value as String?
 
-                            if (orderID != null && managerID != null && status != null) {
+                            if (orderID != null &&siteManagerID!=null&& managerID != null && status != null) {
                                 // get initial package data
-                                val siteName: String? = snapshot.child("siteName").value as String?
+                                val siteManagerContact: String? = snapshot.child("siteManagerContact").value as String?
                                 val dateAdded : String? = snapshot.child("dateAdded").value as String?
                                 val siteAddress: String? = snapshot.child("siteAddress").value as String?
                                 val driverName: String? = snapshot.child("driverName").value as String?
@@ -157,7 +158,7 @@ class ManagerHomeFrag : Fragment() {
                                             }
                                         }
                                         if(materialsList.isNotEmpty()){
-                                            val orderObj = OrderDetailsModel(orderID, managerID, dateAdded!!, status, siteName, siteAddress, driverName, driverID, driverContact, vendorName, vendorID, vendorAddress, materialsList)
+                                            val orderObj = OrderDetailsModel(orderID, managerID,siteManagerID, dateAdded!!, status, siteManagerContact, siteAddress, driverName, driverID, driverContact, vendorName, vendorID, vendorAddress, materialsList)
                                             ordersList.add(orderObj)
                                             orderDisplayList.add(orderObj)
                                             adapter.notifyDataSetChanged()

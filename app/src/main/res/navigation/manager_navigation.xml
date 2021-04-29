@@ -99,6 +99,12 @@
             app:popExitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/navigation_driver"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_register_new_driver"
+            app:destination="@id/registerNewDriverFrag"
+            app:enterAnim="@android:anim/slide_in_left"
+            app:exitAnim="@android:anim/slide_out_right"
+            app:popExitAnim="@android:anim/slide_out_right" />
     </fragment>
     <fragment
         android:id="@+id/addNewPackageFrag"
@@ -141,5 +147,17 @@
         android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.ManagerOrderDetailsFrag"
         android:label="Order Details"
         tools:layout="@layout/fragment_manager_order_details" />
+    <fragment
+        android:id="@+id/registerNewDriverFrag"
+        android:name="com.ald.uniofsouthampton.constructoo.manager.manager_fragments.RegisterNewDriverFrag"
+        android:label="Create New Driver"
+        tools:layout="@layout/fragment_register_new_driver">
+        <action
+            android:id="@+id/action_back_register_new_driver"
+            app:destination="@id/addDriverFragment"
+            app:popExitAnim="@android:anim/slide_out_right"
+            app:popUpTo="@id/addDriverFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>

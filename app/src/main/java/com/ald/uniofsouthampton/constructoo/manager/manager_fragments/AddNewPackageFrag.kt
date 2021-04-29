@@ -31,7 +31,7 @@ class AddNewPackageFrag : Fragment() {
     private val siteNames = arrayListOf<String>()
     private val driverNames = arrayListOf<String>()
     private val vendorNames = arrayListOf<String>()
-    private val mySitesList = arrayListOf<PartialInfoModel>()
+    private val mySitesList = arrayListOf<AddConstructionSiteFrag.ConstructionSiteModel>()
     private val myDriversList = arrayListOf<PartialInfoModel>()
     private val myVendorsList = arrayListOf<PartialInfoModel>()
     private var vIndex = 0
@@ -64,8 +64,10 @@ class AddNewPackageFrag : Fragment() {
                 return@setOnClickListener
             }
             val extras = Bundle()
-            extras.putString("siteName"     ,mySitesList[sIndex].name)
-            extras.putString("siteAddress"  ,mySitesList[sIndex].address)
+            extras.putString("siteManagerID"       ,mySitesList[sIndex].siteManagerID)
+            extras.putString("siteManagerName"     ,mySitesList[sIndex].siteManagerName)
+            extras.putString("siteAddress"         ,mySitesList[sIndex].siteAddress)
+            extras.putString("siteManagerContact"  ,mySitesList[sIndex].siteManagerContact)
 
             extras.putString("driverName"   ,myDriversList[dIndex].name)
             extras.putString("driverID"     ,myDriversList[dIndex].id)
@@ -113,11 +115,14 @@ class AddNewPackageFrag : Fragment() {
                     siteNames.clear()
                     siteNames.add("Choose")
                     for(snap: DataSnapshot in snapshot.children){
-                        val siteName : String? = snap.child("siteName").value as String?
-                        val siteAddress : String? = snap.child("siteAddress").value as String?
-                        if(snap.key!=null && siteName!=null && siteAddress!=null){
-                            mySitesList.add(PartialInfoModel(snap.key!!,siteName,siteAddress))
-                            siteNames.add(siteName)
+                        val siteManagerID : String? = snap.child("siteManagerID").value as String?
+                        val siteManagerName: String? = snap.child("siteManagerName").value as String?
+                        val siteManagerContact:String? = snap.child("siteManagerContact").value as String?
+                        val siteAddress:String? = snap.child("siteAddress").value as String?
+
+                        if(snap.key!=null && siteManagerID!=null && siteAddress!=null && siteManagerContact!=null && siteManagerName!=null){
+                            mySitesList.add(AddConstructionSiteFrag.ConstructionSiteModel(siteManagerID,siteManagerName,siteManagerContact,siteAddress))
+                            siteNames.add(siteAddress)
                         }
                     }
                     if(mySitesList.size>0){

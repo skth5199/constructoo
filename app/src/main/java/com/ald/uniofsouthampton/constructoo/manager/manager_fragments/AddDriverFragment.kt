@@ -31,6 +31,9 @@ class AddDriverFragment : Fragment() {
         binding.driversListRV.layoutManager = LinearLayoutManager(requireActivity())
         adapter = DriversListAdapter(requireActivity(),driversList,findNavController())
         binding.driversListRV.adapter = adapter
+
+        binding.registerDriverFAB.setOnClickListener { findNavController().navigate(R.id.action_register_new_driver) }
+
         getDriversList()
 
         return binding.root
@@ -40,6 +43,7 @@ class AddDriverFragment : Fragment() {
         val vendorsRef = rootRef.child("Users").child("Driver")
         driversList.clear()
         idList.clear()
+
         vendorsRef.addChildEventListener(object : ChildEventListener {
             override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
                 binding.mPrgBar.visibility = View.GONE

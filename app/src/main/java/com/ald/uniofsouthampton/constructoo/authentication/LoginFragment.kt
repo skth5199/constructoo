@@ -60,7 +60,7 @@ class LoginFragment : Fragment() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                accountType = requireActivity().resources.getStringArray(R.array.accountTypeArray)[position]
+                accountType = requireActivity().resources.getStringArray(R.array.loginAccountTypeArray)[position]
                 selectionIndex = position
                 if(position==0){
                     binding.spinnerLayout.setBackgroundResource(R.drawable.spinner_unselected_bk)

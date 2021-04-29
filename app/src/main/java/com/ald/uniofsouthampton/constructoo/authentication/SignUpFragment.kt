@@ -57,26 +57,26 @@ class SignUpFragment : Fragment() {
                         requireActivity().resources.getStringArray(R.array.accountTypeArray)[position]
                     selectionIndex = position
                     binding.spinnerLayout.setBackgroundResource(R.drawable.spinner_selected_bk)
-
-                    when (position) {
-                        0 -> {
-                            binding.spinnerLayout.setBackgroundResource(R.drawable.spinner_unselected_bk)
-                            binding.phoneNumField.visibility = View.INVISIBLE
-                            binding.addressField.visibility = View.INVISIBLE
-                        }
-                        1 -> {
-                            binding.phoneNumField.visibility = View.INVISIBLE
-                            binding.addressField.visibility = View.INVISIBLE
-                        }
-                        2 -> {
-                            binding.phoneNumField.visibility = View.VISIBLE
-                            binding.addressField.visibility = View.INVISIBLE
-                        }
-                        3 -> {
-                            binding.phoneNumField.visibility = View.INVISIBLE
-                            binding.addressField.visibility = View.VISIBLE
-                        }
-                    }
+//
+//                    when (position) {
+//                        0 -> {
+//                            binding.spinnerLayout.setBackgroundResource(R.drawable.spinner_unselected_bk)
+//                            binding.phoneNumField.visibility = View.INVISIBLE
+//                            binding.addressField.visibility = View.INVISIBLE
+//                        }
+//                        1 -> {
+//                            binding.phoneNumField.visibility = View.INVISIBLE
+//                            binding.addressField.visibility = View.INVISIBLE
+//                        }
+//                        2 -> {
+//                            binding.phoneNumField.visibility = View.VISIBLE
+//                            binding.addressField.visibility = View.INVISIBLE
+//                        }
+//                        3 -> {
+//                            binding.phoneNumField.visibility = View.INVISIBLE
+//                            binding.addressField.visibility = View.VISIBLE
+//                        }
+//                    }
                 }
             }
     }
@@ -103,15 +103,15 @@ class SignUpFragment : Fragment() {
             return
         }
         val address = binding.addressET.text.toString()
-        if (accountType == "Vendor" && address.length < 8) {
-            showSnackMsg("Address must contain at least 8 characters.")
+        if (accountType == "Vendor" || accountType == "Site Manager" && address.length < 8) {
+            showSnackMsg("$accountType Address must contain at least 8 characters.")
             return
         }
         var contactNum = ""
-        if (accountType == "Driver") {
+        if (accountType == "Site Manager") {
             contactNum = binding.contactNumET.text.toString()
             if (contactNum.length < 11) {
-                showSnackMsg("Driver account requires a valid contact number.")
+                showSnackMsg("Site Manager account requires a valid contact number.")
                 return
             }
         }
@@ -126,7 +126,8 @@ class SignUpFragment : Fragment() {
                     binding.signUpFAB.isClickable = true
                     binding.signUpPrg.visibility = View.GONE
                     showSnackMsg("Sign up process failed to complete.")
-                } else {
+                }
+                else {
                     val sharedPreferences = requireActivity().getSharedPreferences(
                         "myPrefs",
                         AppCompatActivity.MODE_PRIVATE
@@ -134,7 +135,8 @@ class SignUpFragment : Fragment() {
                     sharedPreferences.edit().putString("accountType", accountType).apply()
                     pushNewUserToDB(userID, username, email, password, address, contactNum)
                 }
-            } else {
+            }
+            else {
                 binding.signUpPrg.visibility = View.GONE
                 binding.signUpFAB.isClickable = true
                 if (it.exception is FirebaseAuthUserCollisionException) {
@@ -147,16 +149,8 @@ class SignUpFragment : Fragment() {
         }
     }
 
-    private fun pushNewUserToDB(
-        userID: String,
-        username: String,
-        email: String,
-        password: String,
-        address: String,
-        contactNum: String
-    ) {
-        val dbRef =
-            FirebaseDatabase.getInstance().reference.child("Users").child(accountType).child(userID)
+    private fun pushNewUserToDB(userID: String, username: String, email: String, password: String, address: String, contactNum: String) {
+        val dbRef = FirebaseDatabase.getInstance().reference.child("Users").child(accountType).child(userID)
         val newUserMap: HashMap<String, String> = HashMap()
         newUserMap["isApproved"] = "false"
         newUserMap["username"] = username
@@ -166,21 +160,17 @@ class SignUpFragment : Fragment() {
         newUserMap["contactNum"] = contactNum
         dbRef.setValue(newUserMap).addOnCompleteListener {
             if (it.isSuccessful) {
-                Toast.makeText(
-                    requireActivity(),
-                    "Account created successfully.",
-                    Toast.LENGTH_LONG
-                ).show()
+                Toast.makeText(requireActivity(), "Account created successfully.", Toast.LENGTH_LONG).show()
                 startActivity(Intent(requireActivity(), AccountVerificationActivity::class.java))
                 requireActivity().finish()
-            } else {
+            }
+            else {
                 binding.signUpFAB.isClickable = true
                 binding.signUpPrg.visibility = View.GONE
                 showSnackMsg("Account created, but registration not complete. Contact admin to verify account")
             }
         }
     }
-
 
     private fun showSnackMsg(msg: String) {
         Snackbar.make(binding.signUpContainer, msg, Snackbar.LENGTH_LONG).show()

@@ -29,9 +29,9 @@ class MySitesAdapter(private val context: Context,
 
     override fun onBindViewHolder(holder: VendorsListViewHolder, position: Int) {
         val siteInfo = mySitesList[position]
-        holder.nameTV.text = siteInfo.siteName
-        holder.emailTV.text = siteInfo.siteAddress
-        holder.addressTV.text = siteInfo.siteManager
+        holder.nameTV.text = siteInfo.siteManager
+        holder.emailTV.text = siteInfo.siteManagerContact
+        holder.addressTV.text = siteInfo.siteAddress
         holder.deleteSiteFAB.setOnClickListener {
             deleteVendor(siteInfo.siteID,holder.deleteSiteFAB,position)
         }

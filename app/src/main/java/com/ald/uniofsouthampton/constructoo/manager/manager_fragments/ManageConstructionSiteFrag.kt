@@ -54,12 +54,12 @@ class ManageConstructionSiteFrag : Fragment() {
                             val siteID: String? = snapshot.key
                             if(siteID!=null && !idList.contains(siteID)){
                                 idList.add(siteID)
-                                val siteName : String? = snapshot.child("siteName").value as String?
+                                val siteManager : String? = snapshot.child("siteManagerName").value as String?
+                                val siteManagerContact : String? = snapshot.child("siteManagerContact").value as String?
                                 val siteAddress : String? = snapshot.child("siteAddress").value as String?
-                                val siteManager : String? = snapshot.child("siteManager").value as String?
 
-                                if(siteName!=null && siteManager!=null && siteAddress!=null){
-                                    sitesList.add(ManagerConstSitesModel(siteID,siteName,siteAddress,siteManager))
+                                if(siteManagerContact!=null && siteManager!=null && siteAddress!=null){
+                                    sitesList.add(ManagerConstSitesModel(siteID,siteManagerContact,siteAddress,siteManager))
                                     adapter.notifyDataSetChanged()
                                 }
                             }
@@ -75,5 +75,5 @@ class ManageConstructionSiteFrag : Fragment() {
     }
 
 
-    data class ManagerConstSitesModel(val siteID : String,val siteName : String, val siteAddress:String, val siteManager: String)
+    data class ManagerConstSitesModel(val siteID : String,val siteManagerContact : String, val siteAddress:String, val siteManager: String)
 }

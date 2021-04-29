@@ -33,8 +33,10 @@ class AddPackageContentFrag : Fragment() {
     private val selectedMaterials = arrayListOf<VendorMaterialModel>()
     private lateinit var materialsAdapter: ChooseVendorMaterialAdapter
     private lateinit var selectionAdapter : SelectedMaterialsAdapter
-    private var siteName     : String? = ""
+    private var siteManagerName     : String? = ""
     private var siteAddress  : String? = ""
+    private var siteManagerID      : String? = ""
+    private var siteManagerContact : String? = ""
     private var driverName   : String? = ""
     private var driverID     : String? = ""
     private var driverContact: String? = ""
@@ -46,8 +48,10 @@ class AddPackageContentFrag : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             driverContact= it.getString("driverContact","")
-            siteName = it.getString("siteName","")
-            siteAddress = it.getString("siteAddress","")
+            siteManagerName   = it.getString("siteManagerName","")
+            siteAddress       = it.getString("siteAddress","")
+            siteManagerID     = it.getString("siteManagerID","")
+            siteManagerContact= it.getString("siteManagerContact","")
             driverID = it.getString("driverID","")
             driverName = it.getString("driverName","")
             vendorID = it.getString("vendorID","")
@@ -139,8 +143,12 @@ class AddPackageContentFrag : Fragment() {
             orderMap["driverContact"] = driverContact!!
             orderMap["dateAdded"]     = getCurrentDate()
             orderMap["status"]        = "pending"
-            orderMap["siteName"]      = siteName!!
+
+            orderMap["siteManagerID"] = siteManagerID!!
+            orderMap["siteManagerContact"] = siteManagerContact!!
+            orderMap["siteManagerName"] = siteManagerName!!
             orderMap["siteAddress"]   = siteAddress!!
+
             orderMap["driverName"]    = driverName!!
             orderMap["driverID"]      = driverID!!
             orderMap["vendorName"]    = vendorName!!
@@ -152,16 +160,25 @@ class AddPackageContentFrag : Fragment() {
                 if(perlimanaryTask.isSuccessful){
                     orderInfoRef.child(orderID).child("packageContents").setValue(selectedMaterials).addOnCompleteListener {
                         if(it.isSuccessful){
-                            binding.progressMsg.text = "Notifying driver ....."
-                            val driverRef = rootRef.child("DriverOrders").child(driverID!!).child(orderID)
-                            driverRef.setValue(orderMap).addOnCompleteListener { finalTask->
-                                if(finalTask.isSuccessful){
-                                    Toast.makeText(requireActivity(),"Package successfully added for delivery.",Toast.LENGTH_LONG).show()
+                            val siteManagerRef = rootRef.child("siteManagerOrders").child(siteManagerID!!).child(orderID)
+                            siteManagerRef.setValue(orderMap).addOnCompleteListener {smTask->
+                                if(smTask.isSuccessful){
+                                    siteManagerRef.child("packageContents").setValue(selectedMaterials).addOnCompleteListener { smTask2->
+                                        if(smTask2.isSuccessful){
+                                            binding.progressMsg.text = "Notifying driver ....."
+                                            val driverRef = rootRef.child("DriverOrders").child(driverID!!).child(orderID)
+                                            driverRef.setValue(orderMap).addOnCompleteListener { finalTask->
+                                                if(finalTask.isSuccessful){
+                                                    Toast.makeText(requireActivity(),"Package successfully added for delivery.",Toast.LENGTH_LONG).show()
+                                                }
+                                                else{
+                                                    Toast.makeText(requireActivity(),"Failed to add package",Toast.LENGTH_LONG).show()
+                                                }
+                                                findNavController().navigate(R.id.action_addPackageContentFrag_to_navigation_home)
+                                            }
+                                        }
+                                    }
                                 }
-                                else{
-                                    Toast.makeText(requireActivity(),"Failed to add package",Toast.LENGTH_LONG).show()
-                                }
-                                findNavController().navigate(R.id.action_addPackageContentFrag_to_navigation_home)
                             }
                         }
                         else{

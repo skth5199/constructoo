@@ -18,9 +18,18 @@
     <array name="accountTypeArray">
         <item>Select Type</item>
         <item>Manager</item>
-        <item>Driver</item>
+        <item>Site Manager</item>
         <item>Vendor</item>
     </array>
+
+    <array name="loginAccountTypeArray">
+        <item>Select Type</item>
+        <item>Manager</item>
+        <item>Driver</item>
+        <item>Site Manager</item>
+        <item>Vendor</item>
+    </array>
+
     <string name="title_activity_manager_home">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -93,5 +102,13 @@
     <string name="you_don_t_have_any_orders_in_your_list">You do not have any orders in your list</string>
     <string name="all_orders">All Orders</string>
     <string name="completed">Completed</string>
+    <string name="x_driver_name">Driver Name</string>
+    <string name="x_driver_email">Driver Email</string>
+    <string name="x_driver_contact">Driver Contact #</string>
+    <string name="register_driver">Register Driver</string>
+    <string name="complete_your_registration_to_proceed">Complete your Registration to proceed</string>
+    <string name="select_profile_image">Select Profile Image</string>
+    <string name="getting_sites_from_site_mangers">Getting sites from site mangers....</string>
+    <string name="site_manager_contact">Site Manager Contact #</string>
 
 </resources>

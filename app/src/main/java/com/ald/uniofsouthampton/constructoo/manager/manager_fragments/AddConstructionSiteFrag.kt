@@ -5,21 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ald.uniofsouthampton.constructoo.R
 import com.ald.uniofsouthampton.constructoo.databinding.FragmentAddConstructionSiteBinding
-import com.google.android.material.snackbar.Snackbar
+import com.ald.uniofsouthampton.constructoo.recycler.ConstructionSitesListAdapter
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
 class AddConstructionSiteFrag : Fragment() {
 
     private lateinit var binding : FragmentAddConstructionSiteBinding
     private lateinit var rootRef : DatabaseReference
     private lateinit var mAuth : FirebaseAuth
+    private lateinit var adapter : ConstructionSitesListAdapter
+    private val sitesList = arrayListOf<ConstructionSiteModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
@@ -27,43 +28,56 @@ class AddConstructionSiteFrag : Fragment() {
         rootRef = FirebaseDatabase.getInstance().reference
         mAuth = FirebaseAuth.getInstance()
 
-        binding.apply {
-            saveNewSiteFAB.setOnClickListener {
-                val siteName = siteNameET.text.toString()
-                if(siteName.length<3){
-                    showSnackMsg("Site name must contain at least 3 characters.")
-                    return@setOnClickListener
-                }
-                val siteAddress = siteAddressET.text.toString()
-                if(siteAddress.length<8){
-                    showSnackMsg("Site Address must contain at least 8 characters.")
-                    return@setOnClickListener
-                }
-                addNewSiteToDB(ConstructionSiteModel(siteName,siteAddress,siteManagerET.text.toString()))
-            }
-        }
+        // set up RecyclerView
+        binding.constructionSitesRV.layoutManager = LinearLayoutManager(requireActivity())
+        adapter = ConstructionSitesListAdapter(requireActivity(),sitesList,findNavController())
+        binding.constructionSitesRV.adapter = adapter
+
+
+        getSiteMangerSitesList()
 
         return binding.root
     }
 
-    private fun addNewSiteToDB(siteInfo : ConstructionSiteModel){
-        if(mAuth.uid!=null){
-            binding.progressLayout.visibility = View.VISIBLE
-            val dbRef = FirebaseDatabase.getInstance().reference.child("ManagerSites").child(mAuth.uid!!).push()
-            dbRef.setValue(siteInfo).addOnCompleteListener {
-                binding.progressLayout.visibility = View.GONE
-                if(it.isSuccessful){
-                    Toast.makeText(requireActivity(),"Successfully added new site",Toast.LENGTH_LONG).show()
-                    findNavController().popBackStack()
+    private fun getSiteMangerSitesList() {
+
+        val sitesRef = rootRef.child("Users").child("Site Manager")
+        sitesList.clear()
+
+        sitesRef.addChildEventListener(object : ChildEventListener {
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+                binding.mPrgBar.visibility = View.GONE
+                binding.prgMsg.visibility = View.GONE
+
+                val managerID : String? = snapshot.key
+                if(managerID!=null){
+
+                    val siteAddress : String? = snapshot.child("address").value as String?
+                    val username : String? = snapshot.child("username").value as String?
+                    val contactNum : String? = snapshot.child("contactNum").value as String?
+
+                    if(siteAddress!=null && username!=null && contactNum!=null){
+                        sitesList.add(ConstructionSiteModel(managerID,username,contactNum,siteAddress))
+                        adapter.notifyDataSetChanged()
+                    }
                 }
-                else{ showSnackMsg("Failed to add this construction site.") }
+
             }
-        }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
     }
 
-    private fun showSnackMsg(msg : String){
-        Snackbar.make(binding.addSiteContainer,msg,Snackbar.LENGTH_LONG).show()
-    }
-
-    data class ConstructionSiteModel(val siteName : String, val siteAddress:String, val siteManager: String)
+    data class ConstructionSiteModel(val siteManagerID : String,val siteManagerName: String,val siteManagerContact:String, val siteAddress:String)
 }
