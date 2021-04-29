@@ -103,9 +103,11 @@ class SignUpFragment : Fragment() {
             return
         }
         val address = binding.addressET.text.toString()
-        if (accountType == "Vendor" || accountType == "Site Manager" && address.length < 8) {
-            showSnackMsg("$accountType Address must contain at least 8 characters.")
-            return
+        if (accountType == "Vendor" || accountType == "Site Manager")  {
+            if(address.length < 8){
+                showSnackMsg("$accountType Address must contain at least 8 characters.")
+                return
+            }
         }
         var contactNum = ""
         if (accountType == "Site Manager") {
