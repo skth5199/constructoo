@@ -1,5 +1,5 @@
 # Constructoo: Delivery for Construction
-In the current digital age, rapid growth in technology has made many companies rely on mobile apps. Many businesses find that mobile applications can provide better solutions and more efficient work processes at a fast-paced time of the day. This application will assist the managers in the company by controlling the packages, determining the construction sites, and assigning the specified driver for this shipment. Moreover, monitoring shipments and knowing their status will also be present. It will also help vendors track the shipments and intimate them when the packages have been delivered.
+In the current digital age, rapid growth in technology has made many companies rely on mobile apps. Many businesses find that mobile applications can provide better solutions and more efficient work processes at a fast-paced time of the day. Constructoo, an Android application, will assist the managers in the company by controlling the packages, determining the construction sites, and assigning the specified driver for this shipment. Moreover, monitoring shipments and knowing their status will also be present. It will also help vendors track the shipments and intimate them when the packages have been delivered.
 
 ## Functional Requirements
 ### Basic Features
